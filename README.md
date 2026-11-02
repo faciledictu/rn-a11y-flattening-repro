@@ -47,6 +47,10 @@ Android 16 and TalkBack 16.2.
 | 10 | `accessibilityIgnoresInvertColors` | iOS | Smart Invert inverts the square | The square stays red |
 | 11 | `accessibilityHint` | iOS, Android | No hint | No hint either: no effect |
 | 12 | `accessibilityLanguage` | iOS | English voice | English voice too: no effect. On the `Text` itself (G0) it works |
+| 13 | `aria-disabled`, `aria-selected`, `aria-expanded`, `aria-checked={false}` | Android | No node with the state | A node with `enabled=false` (D2), `selected=true` (S2), the collapse action (X2), `checkable=true checked=false` (W6) |
+
+Section 13 was checked on an Android 17 emulator with `uiautomator dump` and
+A11yProbe, not with TalkBack.
 
 On iOS, sections 7, 8, 9, 11 and 12 make no difference: a container that is
 not an element is not read. On Android, section 6 makes no difference to

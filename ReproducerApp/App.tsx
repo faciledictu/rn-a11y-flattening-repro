@@ -188,6 +188,33 @@ export default function App() {
           <Text>Zeitung G2 (control)</Text>
         </View>
       </Section>
+
+      <Section title="13. aria-disabled, aria-selected, aria-expanded, aria-checked false (Android)">
+        <View aria-disabled>
+          <Text>Payment D1</Text>
+        </View>
+        <View aria-disabled collapsable={false}>
+          <Text>Payment D2 (control)</Text>
+        </View>
+        <View aria-selected>
+          <Text>Plan S1</Text>
+        </View>
+        <View aria-selected collapsable={false}>
+          <Text>Plan S2 (control)</Text>
+        </View>
+        <View aria-expanded>
+          <Text>Details X1</Text>
+        </View>
+        <View aria-expanded collapsable={false}>
+          <Text>Details X2 (control)</Text>
+        </View>
+        <View aria-checked={false}>
+          <Text>Terms W5</Text>
+        </View>
+        <View aria-checked={false} collapsable={false}>
+          <Text>Terms W6 (control)</Text>
+        </View>
+      </Section>
     </ScrollView>
   );
 }
