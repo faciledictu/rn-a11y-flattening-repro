@@ -48,8 +48,9 @@ Android 16 and TalkBack 16.2.
 | 11 | `accessibilityHint` | iOS, Android | No hint | No hint either: no effect |
 | 12 | `accessibilityLanguage` | iOS | English voice | English voice too: no effect. On the `Text` itself (G0) it works |
 | 13 | `aria-disabled`, `aria-selected`, `aria-expanded`, `aria-checked={false}` | Android | No node with the state | A node with `enabled=false` (D2), `selected=true` (S2), the collapse action (X2), `checkable=true checked=false` (W6) |
+| 14 | The props above on a View with a `backgroundColor` (kept, but its children are mounted next to it) | iOS, Android | Same as flattened: the Pressable reads "Close dialog P3, × P3", no wrapper above Tab K5, no Archive on Child Q3, no Large Content Viewer on H3; on Android `Cart L3` is an empty node next to the text | Same as sections 1–7 with `collapsable={false}` |
 
-Section 13 was checked on an Android 17 emulator with `uiautomator dump` and
+Section 14 was checked on the iOS 27.2 simulator (Accessibility Inspector) and an Android 17 emulator (`uiautomator dump`), not with a screen reader. Section 13 was checked on an Android 17 emulator with `uiautomator dump` and
 A11yProbe, not with TalkBack.
 
 On iOS, sections 7, 8, 9, 11 and 12 make no difference: a container that is

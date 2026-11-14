@@ -23,6 +23,9 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 const box = { padding: 8, borderWidth: 1, borderColor: '#888' } as const;
 const swatch = { width: 44, height: 44, backgroundColor: '#e33' } as const;
 const archive = [{ name: 'archive', label: 'Archive' }];
+// Section 14: a background keeps the View (formsView) but mounts its children
+// next to it, not inside.
+const tint = { backgroundColor: '#eef' } as const;
 
 export default function App() {
   const [last, setLast] = useState('none');
@@ -213,6 +216,102 @@ export default function App() {
         </View>
         <View aria-checked={false} collapsable={false}>
           <Text>Terms W6 (control)</Text>
+        </View>
+      </Section>
+
+      <Section title="14. Kept without its children (backgroundColor only)">
+        <View accessibilityLabel="Cart L3" style={tint}>
+          <Text>3 items L3</Text>
+        </View>
+        <View accessibilityLabel="Cart L4" collapsable={false} style={tint}>
+          <Text>3 items L4 (control)</Text>
+        </View>
+        <Pressable onPress={() => setLast('P3 onPress')} style={box}>
+          <View accessibilityLabel="Close dialog P3" style={tint}>
+            <Text>× P3</Text>
+          </View>
+        </Pressable>
+        <Pressable onPress={() => setLast('P4 onPress')} style={box}>
+          <View
+            accessibilityLabel="Close dialog P4"
+            collapsable={false}
+            style={tint}
+          >
+            <Text>× P4 (control)</Text>
+          </View>
+        </Pressable>
+        <View
+          accessibilityRole="tabbar"
+          style={[tint, { flexDirection: 'row', gap: 8 }]}
+        >
+          <Pressable accessibilityRole="tab" style={box}>
+            <Text>Tab K5</Text>
+          </Pressable>
+          <Pressable accessibilityRole="tab" style={box}>
+            <Text>Tab K6</Text>
+          </Pressable>
+        </View>
+        <View
+          accessibilityRole="tabbar"
+          collapsable={false}
+          style={[tint, { flexDirection: 'row', gap: 8 }]}
+        >
+          <Pressable accessibilityRole="tab" style={box}>
+            <Text>Tab K7 (control)</Text>
+          </Pressable>
+          <Pressable accessibilityRole="tab" style={box}>
+            <Text>Tab K8 (control)</Text>
+          </Pressable>
+        </View>
+        <View onAccessibilityEscape={() => setLast('E3 escape')} style={tint}>
+          <Text>Dialog text E3</Text>
+        </View>
+        <View
+          onAccessibilityEscape={() => setLast('E4 escape')}
+          collapsable={false}
+          style={tint}
+        >
+          <Text>Dialog text E4 (control)</Text>
+        </View>
+        <View
+          accessibilityShowsLargeContentViewer
+          accessibilityLargeContentTitle="Home H3"
+          style={tint}
+        >
+          <Text>Home H3</Text>
+        </View>
+        <View
+          accessibilityShowsLargeContentViewer
+          accessibilityLargeContentTitle="Home H4"
+          collapsable={false}
+          style={tint}
+        >
+          <Text>Home H4 (control)</Text>
+        </View>
+        <View
+          accessibilityActions={archive}
+          onAccessibilityAction={() => setLast('Q3 parent archive')}
+          style={tint}
+        >
+          <View accessible style={box}>
+            <Text>Child Q3</Text>
+          </View>
+        </View>
+        <View
+          accessibilityActions={archive}
+          onAccessibilityAction={() => setLast('Q4 parent archive')}
+          collapsable={false}
+          style={tint}
+        >
+          <View accessible style={box}>
+            <Text>Child Q4 (control)</Text>
+          </View>
+        </View>
+        <View role="heading" style={tint}>
+          <Text>Shipping W7</Text>
+        </View>
+        <View role="heading" collapsable={false} style={tint}>
+          <Text>Shipping W8 (control)</Text>
         </View>
       </Section>
     </ScrollView>
